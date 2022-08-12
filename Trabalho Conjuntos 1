@@ -1,0 +1,120 @@
+conj1 = []
+conj2 = []
+
+def corrigirN(linha):   
+    linha.split("\n")   
+    return linha
+
+def identificarOp(linha,conjunto1,conjunto2):
+  if linha == "U":
+    soma = conjunto1 + conjunto2
+    return soma
+
+
+#trocar aqui o arquivo!!!
+with open(r"C:\Users\Usuario\Desktop\tarefas py\matematica discreta.py\testepython1.txt") as file:
+    texto = file.read().splitlines()
+    print(texto)
+
+matriz2 = []
+for elemento in texto:
+    matriz2.append(elemento.replace(" " , ""))
+
+
+for n in range(0, int(len(texto)), 3):
+    operacao = texto[n]
+    conjunto1 = texto[n + 1]
+    conjunto2 = texto[n + 2]
+
+    
+    if operacao == "U":
+
+        print("União: ")
+        print ("conjunto 1= ", conjunto1)
+        print ("conjunto 2= ", conjunto2)
+
+        resultado = [conjunto1] + [conjunto2]
+
+        matriz3 = []
+        for j in resultado:
+            matriz3.extend(j.split(","))
+
+
+        res = [*set(matriz3)]
+        print("resultado=", res)
+    
+
+    elif operacao == "I":
+        resultado = []
+        print("Interseção: ")
+        print ("conjunto 1= ", conjunto1)
+        print ("conjunto 2= ", conjunto2)
+
+        resultado = [conjunto1] + [conjunto2]
+
+        matriz3 = []
+        for j in resultado:
+            matriz3.extend(j.split(","))
+
+        fds = []
+        
+
+        res = [*set(matriz3)]
+
+
+        for x in res:
+            if x in conjunto1 and x in conjunto2:
+                fds.append(x)
+        print("resultado=", fds)
+                
+                
+
+    elif operacao == "D":
+        print("Diferença: ")
+        print ("conjunto 1= ", conjunto1)
+        print ("conjunto 2= ", conjunto2)
+
+        resultado = []
+
+        resultado = [conjunto1] + [conjunto2]
+
+        matriz3 = []
+        for j in resultado:
+            matriz3.extend(j.split(","))
+
+        fds = []
+        
+        res = [*set(matriz3)]
+
+        for x in res:
+            if x in conjunto1 and not x in conjunto2:
+                fds.append(x)
+        print("resultado=", fds)
+        
+
+
+    elif operacao == "C":
+        print("Produto Cartesiano: ")
+        print ("conjunto 1= ", conjunto1)
+        print ("conjunto 2= ", conjunto2)
+
+        resultado = []
+
+        a = []
+        b = []
+
+        resultado = [conjunto1] + [conjunto2]
+        a.extend(conjunto1.split(","))
+        b.extend(conjunto2.split(","))
+
+        matriz3 = []
+        for j in resultado:
+            matriz3.extend(j.split(","))
+
+        fds = []
+        res = [*set(matriz3)]
+
+        for x in a:
+            for y in b:
+                fds.append([x, y])
+        print("resultado=", fds)
